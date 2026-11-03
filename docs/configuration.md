@@ -1,4 +1,4 @@
-# VSCode-SFTP
+# Pigeon - SFTP/FTP Sync configuration
 
 Configurations are stored in your project working directory under `../.vscode/sftp.json`. <br>
 The configuration file can always be accessed with `CTRL` + `Shift` + `P`, and searching for `SFTP: Config`.
