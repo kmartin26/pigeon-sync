@@ -1,3 +1,6 @@
+## 1.17.1 - 2026-11-03
+* Rename the extension id to `sftp-sync` (`kmartin26.sftp-sync`) because `sftp` is already taken on the Marketplace. First Marketplace release of the fork; 1.17.0 was tagged but never published.
+
 ## 1.17.0 - 2026-11-03
 * Add `localPrivateKeyPath` option to read a hop's private key from the local machine instead of the previous hop ([#6](https://github.com/kmartin26/vscode-sftp/issues/6)).
 
