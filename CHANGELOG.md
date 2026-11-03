@@ -1,4 +1,4 @@
-## Unreleased
+## 1.17.0 - 2026-11-03
 * Add `localPrivateKeyPath` option to read a hop's private key from the local machine instead of the previous hop ([#6](https://github.com/kmartin26/vscode-sftp/issues/6)).
 
 ## 1.16.5 - 2026-10-28

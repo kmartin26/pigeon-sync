@@ -1,7 +1,6 @@
 *
 */**
 **/.DS_Store
-!node_modules/**/*
 !dist/extension.js
 !package.json
 !README.md
@@ -9,3 +8,14 @@
 !LICENSE
 !resources/**/*
 !schema/**/*
+!node_modules/ssh2/package.json
+!node_modules/ssh2/lib/**/*.js
+!node_modules/ssh2/LICENSE
+!node_modules/asn1/package.json
+!node_modules/asn1/lib/**/*.js
+!node_modules/bcrypt-pbkdf/package.json
+!node_modules/bcrypt-pbkdf/index.js
+!node_modules/safer-buffer/package.json
+!node_modules/safer-buffer/safer.js
+!node_modules/tweetnacl/package.json
+!node_modules/tweetnacl/nacl-fast.js

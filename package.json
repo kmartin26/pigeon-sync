@@ -2,7 +2,7 @@
   "name": "sftp",
   "displayName": "SFTP Sync",
   "description": "SFTP/FTP sync (maintained fork of Natizyskunk.sftp)",
-  "version": "1.16.5",
+  "version": "1.17.0",
   "publisher": "kmartin26",
   "author": "Kévin Martin <hello@kmartin.io> (https://github.com/kmartin26)",
   "contributors": [
