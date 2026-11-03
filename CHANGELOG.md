@@ -1,3 +1,9 @@
+## 1.17.2 - 2026-11-03
+* New Pigeon icon: the Marketplace rejected the upstream icon as too similar to an existing one.
+* Modernized README with logo, badges, install and quick start sections.
+* Add a Marketplace gallery banner.
+* Package and publish with `@vscode/vsce` (`npm run package`, `npm run marketplace:publish`) instead of the deprecated `vsce` package.
+
 ## 1.17.1 - 2026-11-03
 * Rename the extension to Pigeon - SFTP/FTP Sync (id `kmartin26.pigeon-sync`) because the `sftp` and `sftp-sync` ids are already taken on the Marketplace. First Marketplace release of the fork; 1.17.0 was tagged but never published.
 

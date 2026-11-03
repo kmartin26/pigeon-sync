@@ -2,7 +2,7 @@
   "name": "pigeon-sync",
   "displayName": "Pigeon - SFTP/FTP Sync",
   "description": "Carry your files to remote servers over SFTP/FTP (maintained fork of Natizyskunk.sftp)",
-  "version": "1.17.1",
+  "version": "1.17.2",
   "publisher": "kmartin26",
   "author": "Kévin Martin <hello@kmartin.io> (https://github.com/kmartin26)",
   "contributors": [
@@ -36,6 +36,10 @@
     "workspaceContains:.vscode/sftp.json"
   ],
   "icon": "resources/icon.png",
+  "galleryBanner": {
+    "color": "#0b6fe8",
+    "theme": "dark"
+  },
   "main": "./dist/extension",
   "contributes": {
     "viewsContainers": {
@@ -705,8 +709,9 @@
     "compile": "webpack --mode production",
     "dev": "webpack --mode development --watch",
     "test": "jest",
-    "package": "vsce package",
-    "pub:debug": "rm -rf _debug && mkdir _debug && vsce package --out _debug/pigeon-sync-debug.vsix && cd _debug && git init && git commit --allow-empty -m 'update debug package' && git checkout -b debug-pacakge && cp ../INSTALL_DEBUG.md README.md  && git add . && git commit -am 'update debug package' && git push git@github.com:kmartin26/pigeon-sync.git debug-pacakge --force"
+    "package": "npx @vscode/vsce package",
+    "marketplace:publish": "npx @vscode/vsce publish",
+    "pub:debug": "rm -rf _debug && mkdir _debug && npx @vscode/vsce package --out _debug/pigeon-sync-debug.vsix && cd _debug && git init && git commit --allow-empty -m 'update debug package' && git checkout -b debug-pacakge && cp ../INSTALL_DEBUG.md README.md  && git add . && git commit -am 'update debug package' && git push git@github.com:kmartin26/pigeon-sync.git debug-pacakge --force"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
