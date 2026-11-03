@@ -5,17 +5,17 @@ Actively maintained fork of [Natizyskunk's SFTP extension](https://github.com/Na
 Upstream's last feature release was 1.16.3 (June 2023). Version 1.16.4 (October 2026) merged long-pending pull requests but still crashes on recent VS Code/Node versions (`util.isDate` removal in `ssh2`). This fork fixes it starting with 1.16.5.
 
 - Marketplace: https://marketplace.visualstudio.com/items?itemName=kmartin26.pigeon-sync (`code --install-extension kmartin26.pigeon-sync`)
-- VSIX release : https://github.com/kmartin26/vscode-sftp/releases/
+- VSIX release : https://github.com/kmartin26/pigeon-sync/releases/
 
 If `Natizyskunk.sftp` or `liximomo.sftp` is installed, uninstall it first: both register the same `sftp.*` commands.
 
 Configuration (`.vscode/sftp.json`) and commands are unchanged, so existing projects work as-is.
 
-Bug reports, feature requests and pull requests are welcome: https://github.com/kmartin26/vscode-sftp/issues. Every report is read and handled as fast as possible.
+Bug reports, feature requests and pull requests are welcome: https://github.com/kmartin26/pigeon-sync/issues. Every report is read and handled as fast as possible.
 
 ---
 
-VSCode-SFTP enables you to add, edit or delete files within a local directory and have it sync to a remote server directory using different transfer protocols like FTP or SSH. The most basic setup requires only a few lines of configuration with a wide array of specific settings also available to meet the needs of any user. Both powerful and fast, it helps developers save time by allowing the use of a familiar editor and environment.
+Pigeon enables you to add, edit or delete files within a local directory and have it sync to a remote server directory using different transfer protocols like FTP or SSH. The most basic setup requires only a few lines of configuration with a wide array of specific settings also available to meet the needs of any user. Both powerful and fast, it helps developers save time by allowing the use of a familiar editor and environment.
 
 - Features
   - [Browser remote with Remote Explorer](#remote-explorer)
@@ -34,7 +34,7 @@ VSCode-SFTP enables you to add, edit or delete files within a local directory an
 ## Installation
 
 ### From VSIX
-1. Download the latest `.vsix` from the [releases page](https://github.com/kmartin26/vscode-sftp/releases/).
+1. Download the latest `.vsix` from the [releases page](https://github.com/kmartin26/pigeon-sync/releases/).
 2. Select Extensions (Ctrl + Shift + X).
 3. Uninstall any other sftp extension (@liximomo or @Natizyskunk): they register the same commands.
 4. Open "More Action" menu (ellipsis on the top) and click "Install from VSIX…".
@@ -87,7 +87,7 @@ For detailed explanations see the [documentation](docs/home.md).
 ## Example configurations
 You can see the full list of configuration options [here](docs/configuration.md).
 
-- [sftp sync extension for VS Code](#sftp-sync-extension-for-vs-code)
+- [Pigeon - SFTP/FTP Sync for VS Code](#pigeon---sftpftp-sync-for-vs-code)
   - [Installation](#installation)
     - [From VSIX](#from-vsix)
   - [Documentation](#documentation)
@@ -266,7 +266,7 @@ In sftp.json:
 ```
 
 ## Remote Explorer
-![remote-explorer-preview](https://raw.githubusercontent.com/kmartin26/vscode-sftp/main/assets/showcase/remote-explorer.png)
+![remote-explorer-preview](https://raw.githubusercontent.com/kmartin26/pigeon-sync/main/assets/showcase/remote-explorer.png)
 
 Remote Explorer lets you explore files in remote. You can open Remote Explorer by:
 

@@ -2,10 +2,10 @@
 * Rename the extension to Pigeon - SFTP/FTP Sync (id `kmartin26.pigeon-sync`) because the `sftp` and `sftp-sync` ids are already taken on the Marketplace. First Marketplace release of the fork; 1.17.0 was tagged but never published.
 
 ## 1.17.0 - 2026-11-03
-* Add `localPrivateKeyPath` option to read a hop's private key from the local machine instead of the previous hop ([#6](https://github.com/kmartin26/vscode-sftp/issues/6)).
+* Add `localPrivateKeyPath` option to read a hop's private key from the local machine instead of the previous hop ([#6](https://github.com/kmartin26/pigeon-sync/issues/6)).
 
 ## 1.16.5 - 2026-10-28
-* Fork now maintained at https://github.com/kmartin26/vscode-sftp (displayName `SFTP Sync`).
+* Fork now maintained at https://github.com/kmartin26/pigeon-sync (displayName `SFTP Sync`).
 * Fix crash on recent VS Code/Node versions caused by removal of `util.isDate`: upgrade `ssh2` to v1.17.
 
 ## 1.16.4 - 2026-10-27

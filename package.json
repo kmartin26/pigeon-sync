@@ -13,12 +13,12 @@
     "vscode": "^1.64.2"
   },
   "bugs": {
-    "url": "https://github.com/kmartin26/vscode-sftp/issues"
+    "url": "https://github.com/kmartin26/pigeon-sync/issues"
   },
-  "homepage": "https://github.com/kmartin26/vscode-sftp#readme",
+  "homepage": "https://github.com/kmartin26/pigeon-sync#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kmartin26/vscode-sftp.git"
+    "url": "https://github.com/kmartin26/pigeon-sync.git"
   },
   "license": "MIT",
   "categories": [
@@ -706,7 +706,7 @@
     "dev": "webpack --mode development --watch",
     "test": "jest",
     "package": "vsce package",
-    "pub:debug": "rm -rf _debug && mkdir _debug && vsce package --out _debug/sftp-debug.vsix && cd _debug && git init && git commit --allow-empty -m 'update debug package' && git checkout -b debug-pacakge && cp ../INSTALL_DEBUG.md README.md  && git add . && git commit -am 'update debug package' && git push git@github.com:kmartin26/vscode-sftp.git debug-pacakge --force"
+    "pub:debug": "rm -rf _debug && mkdir _debug && vsce package --out _debug/pigeon-sync-debug.vsix && cd _debug && git init && git commit --allow-empty -m 'update debug package' && git checkout -b debug-pacakge && cp ../INSTALL_DEBUG.md README.md  && git add . && git commit -am 'update debug package' && git push git@github.com:kmartin26/pigeon-sync.git debug-pacakge --force"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
