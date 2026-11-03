@@ -1,10 +1,13 @@
-# SFTP Sync for VS Code
+# Pigeon - SFTP/FTP Sync for VS Code
 
 Actively maintained fork of [Natizyskunk's SFTP extension](https://github.com/Natizyskunk/vscode-sftp), itself forked from [liximomo's SFTP plugin](https://github.com/liximomo/vscode-sftp). This fork keeps the extension working on current VS Code and Node versions and continues to evolve it.
 
 Upstream's last feature release was 1.16.3 (June 2023). Version 1.16.4 (October 2026) merged long-pending pull requests but still crashes on recent VS Code/Node versions (`util.isDate` removal in `ssh2`). This fork fixes it starting with 1.16.5.
 
+- Marketplace: https://marketplace.visualstudio.com/items?itemName=kmartin26.pigeon-sync (`code --install-extension kmartin26.pigeon-sync`)
 - VSIX release : https://github.com/kmartin26/vscode-sftp/releases/
+
+If `Natizyskunk.sftp` or `liximomo.sftp` is installed, uninstall it first: both register the same `sftp.*` commands.
 
 Configuration (`.vscode/sftp.json`) and commands are unchanged, so existing projects work as-is.
 
