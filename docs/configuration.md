@@ -495,6 +495,7 @@ Absolute path to user private key.
 ### passphrase
 For an encrypted private key, this is the passphrase string used to decrypt it. <br>
 Set to 'true' for enable passphrase dialog. This will prevent from using cleartext passphrase in this config.
+If the private key is encrypted and `passphrase` is not set, the passphrase dialog opens automatically.
 
 | Key | Value |
 | --- | --- |

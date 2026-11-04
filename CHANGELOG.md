@@ -1,3 +1,6 @@
+## Unreleased
+* Ask for the passphrase when the private key is encrypted and `passphrase` is not set, instead of failing with "Encrypted private OpenSSH key detected, but no passphrase given" ([#35](https://github.com/kmartin26/pigeon-sync/issues/35)).
+
 ## 1.17.2 - 2026-11-03
 * New Pigeon icon: the Marketplace rejected the upstream icon as too similar to an existing one.
 * Modernized README with logo, badges, install and quick start sections.
