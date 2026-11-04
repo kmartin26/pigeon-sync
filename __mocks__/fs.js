@@ -10,6 +10,18 @@ fs.createWriteStream = function(path, options) {
   return createWriteStream.call(this, path, options);
 };
 
+// memfs exposes the stream classes as getters that read a symbol on `this`.
+// graceful-fs (used by fs-extra) clones fs without symbols, so the getters
+// break on the clone. Turn them into plain properties.
+['ReadStream', 'WriteStream', 'FileReadStream', 'FileWriteStream'].forEach(name => {
+  Object.defineProperty(fs, name, {
+    value: fs[name],
+    writable: true,
+    enumerable: true,
+    configurable: true,
+  });
+});
+
 // fs-extra expects the native variants to exist
 fs.realpath.native = fs.realpath;
 fs.realpathSync.native = fs.realpathSync;

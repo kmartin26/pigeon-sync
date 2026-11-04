@@ -1,4 +1,4 @@
-import GitIgnore from 'ignore';
+import GitIgnore = require('ignore');
 
 export default class Ignore {
   static from(pattern) {
