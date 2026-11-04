@@ -718,7 +718,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "^16.18.126",
     "@types/vscode": "~1.64.0",
-    "@types/webpack-env": "^1.13.6",
+    "@types/webpack-env": "^1.18.8",
     "jest": "^30.5.2",
     "memfs": "^4.80.0",
     "ts-loader": "^9.6.2",
