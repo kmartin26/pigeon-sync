@@ -14,7 +14,7 @@ export default class LocalRemoteFileSystem extends RemoteFileSystem {
     return {
       type: FileSystem.getFileTypecharacter(stat),
       size: stat.size,
-      mode: stat.mode & parseInt('777', 8), // tslint:disable-line:no-bitwise
+      mode: stat.mode & parseInt('777', 8),
       mtime: this.toLocalTime(stat.mtime.getTime()),
       atime: this.toLocalTime(stat.atime.getTime()),
     };

@@ -26,7 +26,6 @@ export default class SSHClient extends RemoteClient {
       (Array.isArray(connectOption.interactiveAuth) && !!connectOption.interactiveAuth.length) ||
       // or key defined
       ['password', 'agent', 'privateKeyPath', 'localPrivateKeyPath'].some(
-        // tslint:disable-next-line triple-equals
         key => connectOption[key] != undefined
       )
     );
@@ -116,7 +115,7 @@ export default class SSHClient extends RemoteClient {
   //     password,
   //     privateKeyPath,
   //     connectTimeout,
-  //     ...option // tslint:disable-line
+  //     ...option
   //   } = this.getOption();
   //   return new Promise<void>((resolve, reject) => {
   //     const connectWithCredential = (passwd?, privateKey?) =>
@@ -250,7 +249,7 @@ export default class SSHClient extends RemoteClient {
     const {
       interactiveAuth,
       connectTimeout,
-      ...option // tslint:disable-line
+      ...option
     } = remoteOption;
 
     // explict compare to true, cause we want to distinct between string and true
