@@ -11,6 +11,7 @@
 <p align="center">
   <a href="https://marketplace.visualstudio.com/items?itemName=kmartin26.pigeon-sync"><img src="https://vsmarketplacebadges.dev/version-short/kmartin26.pigeon-sync.svg?label=Marketplace&color=0b6fe8" alt="Marketplace version"></a>
   <a href="https://marketplace.visualstudio.com/items?itemName=kmartin26.pigeon-sync"><img src="https://vsmarketplacebadges.dev/installs-short/kmartin26.pigeon-sync.svg?color=0b6fe8" alt="Installs"></a>
+  <a href="https://open-vsx.org/extension/kmartin26/pigeon-sync"><img src="https://img.shields.io/open-vsx/v/kmartin26/pigeon-sync?label=Open%20VSX&color=0b6fe8" alt="Open VSX version"></a>
   <a href="https://github.com/kmartin26/pigeon-sync/releases"><img src="https://img.shields.io/github/v/release/kmartin26/pigeon-sync?color=0b6fe8" alt="GitHub release"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-0b6fe8" alt="License"></a>
 </p>
@@ -46,6 +47,12 @@ Pigeon is the actively maintained successor of [Natizyskunk's SFTP extension](ht
 
 ```sh
 code --install-extension kmartin26.pigeon-sync
+```
+
+**From Open VSX** (VSCodium, Cursor, Windsurf, Gitpod and other VS Code forks): search for **Pigeon** in the Extensions view, or get it on [open-vsx.org](https://open-vsx.org/extension/kmartin26/pigeon-sync). With VSCodium:
+
+```sh
+codium --install-extension kmartin26.pigeon-sync
 ```
 
 **From a VSIX**: download the latest `.vsix` from the [releases page](https://github.com/kmartin26/pigeon-sync/releases), open the Extensions view, then "..." > **Install from VSIX...**.

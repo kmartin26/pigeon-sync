@@ -711,6 +711,7 @@
     "test": "jest",
     "package": "npx @vscode/vsce package",
     "marketplace:publish": "npx @vscode/vsce publish",
+    "openvsx:publish": "npx ovsx publish",
     "pub:debug": "rm -rf _debug && mkdir _debug && npx @vscode/vsce package --out _debug/pigeon-sync-debug.vsix && cd _debug && git init && git commit --allow-empty -m 'update debug package' && git checkout -b debug-pacakge && cp ../INSTALL_DEBUG.md README.md  && git add . && git commit -am 'update debug package' && git push git@github.com:kmartin26/pigeon-sync.git debug-pacakge --force"
   },
   "devDependencies": {
