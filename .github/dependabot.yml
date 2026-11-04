@@ -13,3 +13,14 @@ updates:
         update-types: ["version-update:semver-major"]
       - dependency-name: "joi"
         update-types: ["version-update:semver-major"]
+      # TypeScript 6 deprecates the tsconfig defaults this project relies on,
+      # and TypeScript 7 (native port) does not work with ts-loader.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      # lru-cache 11 requires Node 20; engines.vscode ^1.64.2 runs on Node 14.
+      - dependency-name: "lru-cache"
+        update-types: ["version-update:semver-major"]
+      # Must match the Node version of the extension host (oldest that
+      # compiles with the current TypeScript).
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
