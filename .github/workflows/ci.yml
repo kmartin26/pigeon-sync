@@ -30,6 +30,9 @@ jobs:
       - name: Type check
         run: npx tsc --noEmit -p .
 
+      - name: Check production dependencies support the extension host Node
+        run: npm run check:engines
+
       - name: Build
         run: npm run compile
 
