@@ -727,7 +727,7 @@
     "webpack-cli": "^7.2.3"
   },
   "dependencies": {
-    "async": "^3.2.4",
+    "async": "^3.2.6",
     "fs-extra": "^11.4.1",
     "ftp": "^0.3.10",
     "ignore": "^7.0.14",
