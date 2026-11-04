@@ -93,7 +93,6 @@ function createWatcher(
   }
 
   const shouldAddListenser = watcherConfig.autoUpload || watcherConfig.autoDelete;
-  // tslint:disable-next-line triple-equals
   if (watcherConfig.files == false || !shouldAddListenser) {
     return;
   }

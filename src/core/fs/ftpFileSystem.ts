@@ -21,7 +21,6 @@ function toNumMode(rightObj) {
   // some ftp server would reusult rightObj undefined.
   if (!rightObj) return 0o666;
 
-  // tslint:disable-next-line:no-shadowed-variable
   const modeStr = Object.keys(rightObj).reduce((modeStr, key) => {
     const rightStr = rightObj[key];
     let cur = 0;

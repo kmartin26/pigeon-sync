@@ -11,17 +11,7 @@
         "noUnusedLocals": true,
         "strictNullChecks": true,
         "skipLibCheck": true,
-        "types": ["node", "webpack-env", "jest"],
-        "plugins": [
-          {
-            "name": "typescript-tslint-plugin",
-            "alwaysShowRuleFailuresAsWarnings": false,
-            "ignoreDefinitionFiles": true,
-            "suppressWhileTypeErrorsPresent": false,
-            "mockTypeScriptVersion": false,
-            "configFile": "./tslint.json"
-          }
-        ]
+        "types": ["node", "webpack-env", "jest"]
     },
     "exclude": [
         "node_modules",
