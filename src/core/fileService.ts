@@ -241,7 +241,7 @@ function mergeConfigWithExternalRefer(
     Host: copyed.host,
   });
 
-  if (section === null) {
+  if (!section || !('config' in section)) {
     return copyed;
   }
 
@@ -255,17 +255,20 @@ function mergeConfigWithExternalRefer(
   ]);
 
   section.config.forEach(line => {
-    if (!line.param) {
+    if (!('param' in line) || !line.param) {
       return;
     }
 
     const key = mapping.get(line.param.toLowerCase());
 
     if (key !== undefined) {
+      // multi-token values (e.g. unquoted spaces) are parsed as an array
+      const value =
+        typeof line.value === 'string' ? line.value : line.value.map(token => token.val).join(' ');
       if (key === 'host') {
-        copyed[key] = line.value;
+        copyed[key] = value;
       } else {
-        setConfigValue(copyed, key, line.value);
+        setConfigValue(copyed, key, value);
       }
     }
   });

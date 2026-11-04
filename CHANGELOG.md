@@ -1,3 +1,7 @@
+## Unreleased
+* Require VS Code 1.90 or later (Node 20 extension host). Older VS Code versions keep the previous release.
+* Update runtime dependencies: `fs-extra` 11, `ignore` 7, `lru-cache` 11, `joi` 18, `upath` 3, `ssh-config` 5.
+
 ## 1.17.2 - 2026-11-03
 * New Pigeon icon: the Marketplace rejected the upstream icon as too similar to an existing one.
 * Modernized README with logo, badges, install and quick start sections.
