@@ -1,4 +1,4 @@
-## Unreleased
+## 2.0.0 - 2026-11-04
 * Ask for the passphrase when the private key is encrypted and `passphrase` is not set, instead of failing with "Encrypted private OpenSSH key detected, but no passphrase given" ([#35](https://github.com/kmartin26/pigeon-sync/issues/35)).
 * Require VS Code 1.90 or later (Node 20 extension host). Older VS Code versions keep the previous release.
 * Update runtime dependencies: `fs-extra` 11, `ignore` 7, `lru-cache` 11, `joi` 18, `upath` 3, `ssh-config` 5.
