@@ -12,6 +12,7 @@
   <a href="https://marketplace.visualstudio.com/items?itemName=kmartin26.pigeon-sync"><img src="https://vsmarketplacebadges.dev/version-short/kmartin26.pigeon-sync.svg?label=Marketplace&color=0b6fe8" alt="Marketplace version"></a>
   <a href="https://marketplace.visualstudio.com/items?itemName=kmartin26.pigeon-sync"><img src="https://vsmarketplacebadges.dev/installs-short/kmartin26.pigeon-sync.svg?color=0b6fe8" alt="Installs"></a>
   <a href="https://open-vsx.org/extension/kmartin26/pigeon-sync"><img src="https://img.shields.io/open-vsx/v/kmartin26/pigeon-sync?label=Open%20VSX&color=0b6fe8" alt="Open VSX version"></a>
+  <a href="https://open-vsx.org/extension/kmartin26/pigeon-sync"><img src="https://img.shields.io/open-vsx/dt/kmartin26/pigeon-sync?label=Open%20VSX%20downloads&color=0b6fe8" alt="Open VSX downloads"></a>
   <a href="https://github.com/kmartin26/pigeon-sync/releases"><img src="https://img.shields.io/github/v/release/kmartin26/pigeon-sync?color=0b6fe8" alt="GitHub release"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-0b6fe8" alt="License"></a>
 </p>
