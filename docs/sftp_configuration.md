@@ -52,6 +52,7 @@ Takes precedence over `privateKeyPath` when both are set.
 For an encrypted private key, this is the passphrase string used to decrypt it. <br>
 Set to 'true' for enable passphrase dialog. This will prevent from using cleartext passphrase in this config.
 If the private key is encrypted and `passphrase` is not set, the passphrase dialog opens automatically.
+In a `hop` configuration, `passphrase` applies only to the entry where it is set. A `hop` entry does not inherit the `passphrase` of the root config, so set it in each entry that uses an encrypted key.
 
 | Key | Value |
 | --- | --- |
