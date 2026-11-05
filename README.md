@@ -213,6 +213,24 @@ Connect to a target server through one or more SSH proxies. Variable substitutio
 
 Use `localPrivateKeyPath` instead of `privateKeyPath` to read the key file from the local machine. It works in every hop entry and takes precedence over `privateKeyPath`.
 
+`passphrase` applies only to the entry where it is set. A `hop` entry does not inherit the `passphrase` of the root config. If a key is encrypted and its entry has no `passphrase`, a dialog asks for it when connecting. To be explicit without storing the passphrase in clear text, set `passphrase` to `true`:
+
+```json
+{
+  "host": "hopHost",
+  "username": "hopUsername",
+  "privateKeyPath": "/Users/localUser/.ssh/id_rsa",
+  "passphrase": true, // <-- Only for the key of hopHost.
+
+  "hop": {
+    "host": "targetHost",
+    "username": "targetUsername",
+    "localPrivateKeyPath": "/Users/localUser/.ssh/target_rsa",
+    "passphrase": true // <-- Only for the key of targetHost.
+  }
+}
+```
+
 ### Configuration in user settings
 
 Use `remote` to read the connection from [remote-fs](https://github.com/liximomo/vscode-remote-fs) settings.

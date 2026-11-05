@@ -44,6 +44,11 @@ export default class SSHClient extends RemoteClient {
     option: ConnectOption,
     fs: FileSystem | RemoteFileSystem
   ): Promise<void> {
+    // The client of an intermediate hop gets the key already read from the right machine.
+    if (option.privateKey) {
+      return;
+    }
+
     if (option.localPrivateKeyPath) {
       const buffer = await localFs.readFile(option.localPrivateKeyPath);
       option.privateKey = buffer.toString();
@@ -67,9 +72,11 @@ export default class SSHClient extends RemoteClient {
       (hop && Object.keys(hop).length > 0)
     ) {
       this.hoppingClients = [];
-      const connectOptions = Array.isArray(hop)
+      // Copy the entries: the loaded key must not stay in the config between connections.
+      const connectOptions = (Array.isArray(hop)
         ? [option].concat(hop)
-        : [option, hop];
+        : [option, hop]
+      ).map(entry => ({ ...entry }));
       lastOption = connectOptions.pop()!;
 
       for (let index = 0; index < connectOptions.length; index++) {
