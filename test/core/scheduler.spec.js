@@ -15,7 +15,7 @@ const randomInt = function(min, max) {
 const timers = new Set();
 const delay = millisecends =>
   new Promise(resolve => {
-    const timer = setTimeout(() => {
+    const timer = setTimeout(() => { // DevSkim: ignore DS172411
       timers.delete(timer);
       resolve();
     }, millisecends);

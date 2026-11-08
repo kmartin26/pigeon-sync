@@ -54,7 +54,7 @@ export default class FTPClient extends RemoteClient {
 
     const { username, connectTimeout = 3 * 1000, ...option } = connectOption;
     return new Promise<void>((resolve, reject) => {
-      setTimeout(() => {
+      setTimeout(() => { // DevSkim: ignore DS172411
         if (!this.connected) {
           this.end();
           reject(new Error('Timeout while connecting to server'));
