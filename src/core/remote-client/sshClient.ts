@@ -375,7 +375,7 @@ export default class SSHClient extends RemoteClient {
     return new Promise((resolve, reject) => {
       // Create a connect form 127.0.0.1:port to dstHost:dstPort
       sshClient._client.forwardOut(
-        '127.0.0.1',
+        '127.0.0.1', // DevSkim: ignore DS162092
         sshClient._option.port,
         dstHost,
         dstPort,

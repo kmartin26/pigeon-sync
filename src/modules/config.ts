@@ -179,7 +179,7 @@ export function newConfig(basePath) {
           configPath,
           {
             name: 'My Server',
-            host: 'localhost',
+            host: 'localhost', // DevSkim: ignore DS162092
             protocol: 'sftp',
             port: 22,
             username: 'username',
