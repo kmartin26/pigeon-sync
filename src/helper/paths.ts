@@ -27,12 +27,12 @@ export function simplifyPath(absolutePath: string) {
   return pathRelativeToWorkspace(absolutePath);
 }
 
-// See #48: use fs.pathResolver instead of upath.
+// Remote paths use upath (POSIX separators), the same pathResolver as every
+// remote file system; local paths use the platform path module.
 export function toRemotePath(localPath: string, localContext: string, remoteContext: string) {
   return upath.join(remoteContext, path.relative(getFileSystemPath(localContext), getFileSystemPath(localPath)));
 }
 
-// See #48: use fs.pathResolver instead of upath.
 export function toLocalPath(remotePath: string, remoteContext: string, localContext: string) {
   return path.join(localContext, upath.relative(remoteContext, remotePath));
 }
