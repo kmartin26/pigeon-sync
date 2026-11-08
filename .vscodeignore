@@ -7,7 +7,7 @@
 !CHANGELOG.md
 !LICENSE
 !resources/**/*
-!schema/**/*
+!schema/**/*.json
 !node_modules/ssh2/package.json
 !node_modules/ssh2/lib/**/*.js
 !node_modules/ssh2/LICENSE
