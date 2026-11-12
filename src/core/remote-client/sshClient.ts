@@ -114,6 +114,10 @@ export default class SSHClient extends RemoteClient {
 
     await this._connectSSHClient(this._client, { ...lastOption, sock }, config);
     this.sftp = await this._getSftp(this._client);
+    // The server can close the SFTP channel and keep the SSH connection open.
+    // ssh2 then emits `close` on the channel only. End the connection, so that
+    // its `close` event invalidates the cached file system.
+    this.sftp.on('close', () => this._client.end());
 
     if (lastOption.limitOpenFilesOnRemote) {
       if (typeof lastOption.limitOpenFilesOnRemote !== 'boolean') {
