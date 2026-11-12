@@ -27,12 +27,15 @@ describe('SSHClient private key of an intermediate hop', () => {
         cb(null, new EventEmitter())
       );
       client.sftp = jest.fn(cb =>
-        cb(null, {
-          createReadStream: keyPath => {
-            remoteReads.push(keyPath);
-            return Readable.from([Buffer.from(remoteKey)]);
-          },
-        })
+        cb(
+          null,
+          Object.assign(new EventEmitter(), {
+            createReadStream: keyPath => {
+              remoteReads.push(keyPath);
+              return Readable.from([Buffer.from(remoteKey)]);
+            },
+          })
+        )
       );
       fakeClients.push(client);
       return client;
