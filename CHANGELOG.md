@@ -1,3 +1,6 @@
+## Unreleased
+* Reload the configuration when `.vscode/sftp.json` changes outside the editor, for example after a `git checkout`. Deleting the file removes its profiles ([#53](https://github.com/kmartin26/pigeon-sync/issues/53)).
+
 ## 2.0.0 - 2026-11-05
 * Read `privateKeyPath` of an intermediate hop on the previous hop only, instead of reading the same path again on the local machine ([#42](https://github.com/kmartin26/pigeon-sync/issues/42)).
 * Ask for the passphrase when the private key is encrypted and `passphrase` is not set, instead of failing with "Encrypted private OpenSSH key detected, but no passphrase given" ([#35](https://github.com/kmartin26/pigeon-sync/issues/35)).

@@ -3,6 +3,8 @@
 Configurations are stored in your project working directory under `../.vscode/sftp.json`. <br>
 The configuration file can always be accessed with `CTRL` + `Shift` + `P`, and searching for `SFTP: Config`.
 
+The configuration is reloaded when the file changes, including changes made outside VS Code, such as a `git checkout`. If the file is deleted, its profiles are removed.
+
 ![image](https://github.com/user-attachments/assets/5ceff350-7678-4264-98d4-2741a98a9dbe)
 
 ## Table of Contents
