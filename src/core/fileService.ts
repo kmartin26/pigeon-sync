@@ -6,7 +6,7 @@ import app from '../app';
 import logger from '../logger';
 import { getUserSetting } from '../host';
 import { replaceHomePath, resolvePath } from '../helper';
-import { SETTING_KEY_REMOTE } from '../constants';
+import { CONFIG_PATH, SETTING_KEY_REMOTE } from '../constants';
 import upath from './upath';
 import Ignore from './ignore';
 import { FileSystem } from './fs';
@@ -624,7 +624,9 @@ export default class FileService {
     const localContext = this.baseDir;
     const remoteContext = config.remotePath;
 
-    const ignoreConfig = filesIgnoredFromConfig(config);
+    const ignoreConfig = filesIgnoredFromConfig(config).concat(
+      this._configFilePattern()
+    );
     if (ignoreConfig.length <= 0) {
       return null;
     }
@@ -651,6 +653,20 @@ export default class FileService {
     };
 
     return ignoreFunc;
+  }
+
+  // The config file can contain credentials: never transfer it, whatever the
+  // ignore setting. Patterns are relative to the context.
+  private _configFilePattern(): string[] {
+    const configFile = path.relative(
+      this.baseDir,
+      path.join(this.workspace, CONFIG_PATH)
+    );
+    if (configFile.startsWith('..') || path.isAbsolute(configFile)) {
+      return [];
+    }
+
+    return ['/' + configFile.split(path.sep).join('/')];
   }
 
   private _createWatcher() {
