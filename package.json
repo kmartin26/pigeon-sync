@@ -2,7 +2,7 @@
   "name": "pigeon-sync",
   "displayName": "Pigeon - SFTP/FTP Sync",
   "description": "Carry your files to remote servers over SFTP/FTP (maintained fork of Natizyskunk.sftp)",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "publisher": "kmartin26",
   "author": "Kévin Martin <hello@kmartin.io> (https://github.com/kmartin26)",
   "contributors": [
