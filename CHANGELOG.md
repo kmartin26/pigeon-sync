@@ -1,3 +1,6 @@
+## Unreleased
+* `Upload Changed Files` waits for its transfers before writing the result, and logs each failed upload, rename or delete ([#58](https://github.com/kmartin26/pigeon-sync/issues/58)).
+
 ## 2.0.0 - 2026-11-05
 * Read `privateKeyPath` of an intermediate hop on the previous hop only, instead of reading the same path again on the local machine ([#42](https://github.com/kmartin26/pigeon-sync/issues/42)).
 * Ask for the passphrase when the private key is encrypted and `passphrase` is not set, instead of failing with "Encrypted private OpenSSH key detected, but no passphrase given" ([#35](https://github.com/kmartin26/pigeon-sync/issues/35)).
