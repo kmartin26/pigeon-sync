@@ -60,7 +60,7 @@ function scheduleConfigReload(uri: vscode.Uri) {
 
   pendingConfigReloads.set(
     key,
-    setTimeout(() => {
+    setTimeout(() => { // DevSkim: ignore DS172411
       pendingConfigReloads.delete(key);
       reloadConfig(uri);
     }, CONFIG_RELOAD_DELAY)
