@@ -1,4 +1,7 @@
 ## Unreleased
+* Reconnect when the server closes the SFTP channel and keeps the SSH connection open, instead of hanging ([#52](https://github.com/kmartin26/pigeon-sync/issues/52)).
+* Download to a local folder or file that does not exist yet on macOS and Windows, instead of failing with `ENOENT: no such file or directory, realpath` ([#57](https://github.com/kmartin26/pigeon-sync/issues/57)).
+* `Upload Changed Files` waits for its transfers before writing the result, and logs each failed upload, rename or delete ([#58](https://github.com/kmartin26/pigeon-sync/issues/58)).
 * Apply the `ignore` patterns on Windows when the drive letter of a local path is upper-case ([#60](https://github.com/kmartin26/pigeon-sync/issues/60)).
 
 ## 2.0.0 - 2026-11-05
