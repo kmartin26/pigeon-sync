@@ -187,6 +187,7 @@ export function newConfig(basePath) {
             uploadOnSave: false,
             useTempFile: false,
             openSsh: false,
+            ignore: ['.vscode', '.git', '.DS_Store'],
           },
           { spaces: 4 }
         )

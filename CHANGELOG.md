@@ -1,3 +1,6 @@
+## Unreleased
+* Never upload or download the `.vscode/sftp.json` file of the workspace folder, which can contain credentials. `SFTP: Config` now creates the file with `"ignore": [".vscode", ".git", ".DS_Store"]` ([#59](https://github.com/kmartin26/pigeon-sync/issues/59)).
+
 ## 2.0.0 - 2026-11-05
 * Read `privateKeyPath` of an intermediate hop on the previous hop only, instead of reading the same path again on the local machine ([#42](https://github.com/kmartin26/pigeon-sync/issues/42)).
 * Ask for the passphrase when the private key is encrypted and `passphrase` is not set, instead of failing with "Encrypted private OpenSSH key detected, but no passphrase given" ([#35](https://github.com/kmartin26/pigeon-sync/issues/35)).
