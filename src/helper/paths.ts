@@ -4,6 +4,20 @@ import * as fs from 'fs';
 import { upath } from '../core';
 import { pathRelativeToWorkspace, getWorkspaceFolders } from '../host';
 
+// Resolve the existing part of the path and keep the rest, so that a local
+// destination that does not exist yet (e.g. a download) does not throw ENOENT.
+function realpathOfExistingPart(fsPath: string): string {
+	try {
+		return fs.realpathSync.native(fsPath);
+	} catch (error) {
+		const parent = path.dirname(fsPath);
+		if (error.code !== 'ENOENT' || parent === fsPath) {
+			throw error;
+		}
+		return path.join(realpathOfExistingPart(parent), path.basename(fsPath));
+	}
+}
+
 // from https://github.com/microsoft/vscode-eslint/blob/d97a8b5e99ad30d2ce32ffa5646447202f873413/server/src/eslintServer.ts#L816
 function getFileSystemPath(fsPath: string): string {
 	let result = fsPath;
@@ -14,7 +28,7 @@ function getFileSystemPath(fsPath: string): string {
 		result = result[0].toUpperCase() + result.substr(1);
 	}
 	if (process.platform === 'win32' || process.platform === 'darwin') {
-		const realpath = fs.realpathSync.native(result);
+		const realpath = realpathOfExistingPart(result);
 		// Only use the real path if only the casing has changed.
 		if (realpath.toLowerCase() === result.toLowerCase()) {
 			result = realpath;
