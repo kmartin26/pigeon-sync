@@ -6,7 +6,7 @@ import app from '../app';
 import logger from '../logger';
 import { getUserSetting } from '../host';
 import { replaceHomePath, resolvePath } from '../helper';
-import { SETTING_KEY_REMOTE } from '../constants';
+import { CONFIG_PATH, SETTING_KEY_REMOTE } from '../constants';
 import upath from './upath';
 import Ignore from './ignore';
 import { FileSystem } from './fs';
@@ -143,6 +143,15 @@ function filesIgnoredFromConfig(config: FileServiceConfig): string[] {
   }
 
   return ignore.concat(ignoreFromFile.split(/\r?\n/g));
+}
+
+// The base directory has a lower-case drive letter on Windows, but a local
+// path can have an upper-case one.
+function lowerCaseDriveLetter(fsPath: string): string {
+  if (process.platform === 'win32' && fsPath.charAt(1) === ':') {
+    return fsPath.charAt(0).toLowerCase() + fsPath.slice(1);
+  }
+  return fsPath;
 }
 
 function getHostInfo(config) {
@@ -615,7 +624,9 @@ export default class FileService {
     const localContext = this.baseDir;
     const remoteContext = config.remotePath;
 
-    const ignoreConfig = filesIgnoredFromConfig(config);
+    const ignoreConfig = filesIgnoredFromConfig(config).concat(
+      this._configFilePattern()
+    );
     if (ignoreConfig.length <= 0) {
       return null;
     }
@@ -625,7 +636,11 @@ export default class FileService {
       // vscode will always return path with / as separator
       const normalizedPath = path.normalize(fsPath);
       let relativePath;
-      if (normalizedPath.indexOf(localContext) === 0) {
+      if (
+        lowerCaseDriveLetter(normalizedPath).indexOf(
+          lowerCaseDriveLetter(localContext)
+        ) === 0
+      ) {
         // local path
         relativePath = path.relative(localContext, fsPath);
       } else {
@@ -638,6 +653,20 @@ export default class FileService {
     };
 
     return ignoreFunc;
+  }
+
+  // The config file can contain credentials: never transfer it, whatever the
+  // ignore setting. Patterns are relative to the context.
+  private _configFilePattern(): string[] {
+    const configFile = path.relative(
+      this.baseDir,
+      path.join(this.workspace, CONFIG_PATH)
+    );
+    if (configFile.startsWith('..') || path.isAbsolute(configFile)) {
+      return [];
+    }
+
+    return ['/' + configFile.split(path.sep).join('/')];
   }
 
   private _createWatcher() {

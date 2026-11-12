@@ -6,6 +6,8 @@ import { uploadFile, renameRemote, removeRemote } from '../fileHandlers';
 import { getGitService, GitAPI, Repository, Status, Change } from '../modules/git';
 import { checkCommand } from './abstract/createCommand';
 import logger from '../logger';
+import app from '../app';
+import StatusBarItem from '../ui/statusBarItem';
 import { simplifyPath } from '../helper';
 
 export default checkCommand({
@@ -95,29 +97,21 @@ async function handleCommand(hint: any) {
     }
   }
 
-  await Promise.all(creates.concat(uploads).map(change => {
-    try {
-      uploadFile(change.uri)
-    } catch (e) {
-      logger.error('Upload failed.', e);
-    }
-  }));
   await Promise.all(
-    renames.map(change => {
-      try {
-        renameRemote(change.originalUri, { originPath: change.renameUri!.fsPath });
-      } catch (e) {
-        logger.error('Rename failed.', e);
-      }
-    })
+    creates
+      .concat(uploads)
+      .map(change => uploadFile(change.uri).catch(logFailure('upload', change.uri.fsPath)))
   );
-  await Promise.all(deletes.map(change => {
-    try {
-      removeRemote(change.uri)
-    } catch (e) {
-      logger.error('Deletion failed.', e);
-    }
-  }));
+  await Promise.all(
+    renames.map(change =>
+      renameRemote(change.originalUri, { originPath: change.renameUri!.fsPath }).catch(
+        logFailure('rename', change.originalUri.fsPath)
+      )
+    )
+  );
+  await Promise.all(
+    deletes.map(change => removeRemote(change.uri).catch(logFailure('delete', change.uri.fsPath)))
+  );
 
   logger.log('');
   logger.log('------ Upload Changed Files Result ------');
@@ -129,6 +123,13 @@ async function handleCommand(hint: any) {
     c => `${simplifyPath(c.originalUri.fsPath)} ➞ ${simplifyPath(c.renameUri!.fsPath)}`
   );
   outputGroup('deleted', deletes, c => simplifyPath(c.uri.fsPath));
+}
+
+function logFailure(action: string, fsPath: string) {
+  return (error: Error) => {
+    logger.error(error, `${action} ${simplifyPath(fsPath)}`);
+    app.sftpBarItem.updateStatus(StatusBarItem.Status.error);
+  };
 }
 
 function outputGroup<T>(label: string, items: T[], formatItem: (x: T) => string) {
