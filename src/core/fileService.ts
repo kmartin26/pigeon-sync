@@ -145,6 +145,15 @@ function filesIgnoredFromConfig(config: FileServiceConfig): string[] {
   return ignore.concat(ignoreFromFile.split(/\r?\n/g));
 }
 
+// The base directory has a lower-case drive letter on Windows, but a local
+// path can have an upper-case one.
+function lowerCaseDriveLetter(fsPath: string): string {
+  if (process.platform === 'win32' && fsPath.charAt(1) === ':') {
+    return fsPath.charAt(0).toLowerCase() + fsPath.slice(1);
+  }
+  return fsPath;
+}
+
 function getHostInfo(config) {
   const ignoreOptions = [
     'name',
@@ -627,7 +636,11 @@ export default class FileService {
       // vscode will always return path with / as separator
       const normalizedPath = path.normalize(fsPath);
       let relativePath;
-      if (normalizedPath.indexOf(localContext) === 0) {
+      if (
+        lowerCaseDriveLetter(normalizedPath).indexOf(
+          lowerCaseDriveLetter(localContext)
+        ) === 0
+      ) {
         // local path
         relativePath = path.relative(localContext, fsPath);
       } else {
