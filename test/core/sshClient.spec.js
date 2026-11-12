@@ -104,7 +104,7 @@ describe('SSHClient passphrase prompt with hops', () => {
       client.forwardOut = jest.fn((srcHost, srcPort, dstHost, dstPort, cb) =>
         cb(null, new EventEmitter())
       );
-      client.sftp = jest.fn(cb => cb(null, {}));
+      client.sftp = jest.fn(cb => cb(null, new EventEmitter()));
       fakeClients.push(client);
       return client;
     });
@@ -232,5 +232,45 @@ describe('SSHClient passphrase prompt with hops', () => {
         undefined
       )
     ).rejects.toMatchObject({ code: ErrorCode.CONNECT_CANCELLED });
+  });
+});
+
+describe('SSHClient closed SFTP channel', () => {
+  let client;
+  let sftp;
+
+  beforeEach(() => {
+    sftp = new EventEmitter();
+    jest.spyOn(SSHClient.prototype, '_initClient').mockImplementation(() => {
+      client = createFakeClient();
+      // Like ssh2, the connection emits `close` once, even if end() is called again.
+      let closed = false;
+      client.end = jest.fn(() => {
+        if (!closed) {
+          closed = true;
+          client.emit('close');
+        }
+      });
+      client.sftp = jest.fn(cb => cb(null, sftp));
+      return client;
+    });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test('ends the connection when the server closes the SFTP channel', async () => {
+    const option = { host: 'example.com', port: 22, username: 'user', password: 'secret' };
+    const sshClient = new SSHClient(option);
+    const onDisconnected = jest.fn();
+    sshClient.onDisconnected(onDisconnected);
+    await sshClient.connect(option, { askForPasswd: jest.fn() });
+
+    expect(client.end).not.toHaveBeenCalled();
+    sftp.emit('close');
+
+    expect(client.end).toHaveBeenCalled();
+    expect(onDisconnected).toHaveBeenCalledWith('close');
   });
 });
