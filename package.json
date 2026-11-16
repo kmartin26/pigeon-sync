@@ -722,7 +722,7 @@
     "@types/vscode": "~1.90.0",
     "@types/webpack-env": "^1.18.8",
     "jest": "^30.5.2",
-    "memfs": "^4.80.0",
+    "memfs": "^4.80.1",
     "semver": "^7.8.6",
     "ts-loader": "^9.6.2",
     "typescript": "~5.9.3",
